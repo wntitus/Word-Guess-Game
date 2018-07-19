@@ -1,5 +1,6 @@
 // declaring global wins and losses as well as creating an empty array to hold our underscores
-// also creating alphabet array to make sure later the user is pressing a letter key
+// creating alphabet array to make sure later the user is pressing a letter key
+// also creating guessed array to hold guessed letters and the amount of guesses left
 
 var wins = 0;
 var losses = 0;
@@ -19,9 +20,6 @@ var wordBank = [
     "sardines"
 
 ];
-
-
-
 
 // creating a function to create an underscore array with the correct amount of underscores for each word
 
@@ -46,6 +44,8 @@ splitWord = function(target) {
     return randoTwo;
 }
 
+// creating a function to reset the game after a win or loss
+
 resetGame = function() {
     undArray = [];
     pcChoiceInit = randWord(wordBank);
@@ -56,18 +56,23 @@ resetGame = function() {
 }
 
 // getting a starting word for the computer before key press 
+
 var pcChoiceInit = randWord(wordBank);
 console.log("PC CHOSE " + pcChoiceInit);
+
+// splitting starting word into an array of individual letters to make it easier to push into the underscore array so that
+// the proper correct guesses are displayed
 
 var pcChoice = splitWord(pcChoiceInit);
 console.log("THIS SHOULD BE AN ARRAY OF THE LETTERS " + pcChoice);
 
 // creating underscores array before key press 
+
 var undWord = wordWipe(pcChoice);
 console.log("THIS SHOULD BE ALL UNDERSCORES " + undWord);
 
 
-
+// main game logic begins after user presses a key
 
 document.onkeyup = function(event) {
 
@@ -82,6 +87,12 @@ document.onkeyup = function(event) {
         guessed.push(event.key);
     }
 
+    // checking to see if the computer choice has a letter in it that the user picked, if so the pc choice is iterated over
+    // and the index of the user's letter is stored so that the letter can be removed from the computer choice and added
+    // to our displayed letters (in this case the array of underscores functions as our display)
+    //
+    // the user's letter is removed from the computer choice array so that unintended behavior does not happen for
+    // words with the same letter multiple times
 
     if (pcChoice.includes(userGuess)) {
         for(i = 0; i < pcChoice.length; i++) {
@@ -95,9 +106,14 @@ document.onkeyup = function(event) {
         }
     }
 
+    // if the computer choice doesnt have the user guess in it, the user loses a guess 
+
     if (pcChoice.includes(userGuess) == false) {
         guessLeft--;
     }
+
+    // if the displayed letters no longer have any underscores (meaning the user has found all the letters), the game ends
+    // and the user gains a win, then the game resets
 
     if (undWord.includes("_") == false) {
         wins++
@@ -105,12 +121,15 @@ document.onkeyup = function(event) {
         resetGame();
     }
 
+    // if the user runs out of guesses, the user gains a loss and the game resets
+
     if (guessLeft == 0) {
         losses++ 
         alert("You've lost!!! The game has been reset.");
         resetGame();
     }
 
+    // setting our main game contents to a variable
 
     var gameBody = 
         "<p>You have: " + guessLeft + " guesses left.</p>" +
@@ -122,7 +141,8 @@ document.onkeyup = function(event) {
         "You've guessed these letters: " + guessed;
 
     
-    
+    // updates the HTML of our main body div with the correct stats and HTML
+
     document.querySelector("#startBody").innerHTML = gameBody;
 
 
