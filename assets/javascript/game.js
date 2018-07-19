@@ -6,18 +6,18 @@ var losses = 0;
 var undArray = [];
 var alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var guessed = [];
+var guessLeft = 6;
 
 // creating wordBank object that has our words 
 
 
-var wordBank = {
-    wordOne : "pepperoni",
-    wordTwo : "sardines" ,
-    wordThree : "bacon" ,
-    wordFour : "olives" ,
-    wordFive : "mushrooms" 
-
-}
+var wordBank = [
+    "pepperoni",
+    "olives",
+    "mushrooms",
+    "bacon",
+    "sardines"
+];
 
 
 
@@ -30,6 +30,19 @@ wordWipe = function(wone) {
     return undArray;
 }
 
+randWord = function(object) {
+    var result ;
+    var counter = 0;
+    for(var property in object) {
+        if (Math.random() < 1/++count) {
+            result = property;
+        }
+        return result;
+    }
+}
+
+
+
 
 document.onkeyup = function(event) {
 
@@ -39,9 +52,37 @@ document.onkeyup = function(event) {
     // checking to make sure the user pressed a letter
 
     if (alpha.includes(event.key)) {
-        var userGuess = event.key;
+        var input = event.key;
+        var userGuess = input.toLowerCase();
         guessed.push(event.key);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var gameBody = 
+        "<p>You have: " + guessLeft + " guesses left.</p>" +
+        "<p>You've won: " + wins + " times.</p>" +
+        "<p>You've lost: " + losses + " times.</p>" +
+        "<br><br><br>" +
+        "YOUR WORD TO GUESS: "  /*VARIABLE HERE!!!!!!!!*/ + 
+        "<br><br>" + 
+        "You've guessed these letters: " + guessed;
+
+    
+    
+    document.querySelector("#startBody").innerHTML = gameBody;
+
+
 
 
 
