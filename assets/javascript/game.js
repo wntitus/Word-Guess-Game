@@ -144,14 +144,18 @@ document.onkeyup = function(event) {
         resetGame();
     }
 
-    // setting our main game contents to a variable
+    // making it so our displayed empty word doesn't have commas and looks nice
 
+    var displayJoined = undWord.join("     ");
+
+    // setting our game contents to a variable
+    
     var gameBody = 
         "<p>You have: " + guessLeft + " guesses left.</p>" +
         "<p>You've won: " + wins + " times.</p>" +
         "<p>You've lost: " + losses + " times.</p>" +
         "<br><br><br>" +
-        "YOUR WORD TO GUESS: "  + undWord + 
+        "YOUR WORD TO GUESS: "  + displayJoined + 
         "<br><br>" + 
         "You've guessed these letters: " + guessed;
 
