@@ -6,7 +6,7 @@ var losses = 0;
 var undArray = [];
 var alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var guessed = [];
-var guessLeft = 6;
+var guessLeft = 12;
 
 // creating wordBank object that has our words 
 
@@ -18,6 +18,7 @@ var wordBank = [
     "bacon",
     "sardines"
 ];
+
 
 
 
@@ -41,7 +42,19 @@ randWord = function(arr) {
 
 splitWord = function(target) {
     var randoTwo = target.split("");
+    return randoTwo;
 }
+
+// getting a starting word for the computer before key press 
+var pcChoiceInit = randWord(wordBank);
+console.log("PC CHOSE " + pcChoiceInit);
+
+var pcChoice = splitWord(pcChoiceInit);
+console.log("THIS SHOULD BE AN ARRAY OF THE LETTERS " + pcChoice);
+
+// creating underscores array before key press 
+var undWord = wordWipe(pcChoice);
+console.log("THIS SHOULD BE ALL UNDERSCORES " + undWord);
 
 
 
@@ -60,6 +73,39 @@ document.onkeyup = function(event) {
     }
 
 
+    if (pcChoice.includes(userGuess)) {
+        guessLeft--;
+        for(i = 0; i < pcChoice.length; i++) {
+            var choiceIndex = pcChoice.indexOf(userGuess);
+            if (choiceIndex > -1) {
+                delete pcChoice[choiceIndex];
+                undWord.splice(choiceIndex, 1, userGuess);
+                console.log(undWord + " loop " + i);
+                console.log(pcChoice + " loop " + i);
+            }           
+        }
+    }
+
+    if (pcChoice.includes(userGuess) == false) {
+        guessLeft--;
+    }
+
+    if (undWord.includes("_") == false) {
+        wins++
+        alert("You've won!!!! The word was " + undWord + " The game has been reset.");
+    }
+
+    if (guessLeft == 0) {
+        losses++ 
+        alert("You've lost!!! The game has been reset.");
+    }
+
+
+ 
+
+
+
+
 
 
 
@@ -76,7 +122,7 @@ document.onkeyup = function(event) {
         "<p>You've won: " + wins + " times.</p>" +
         "<p>You've lost: " + losses + " times.</p>" +
         "<br><br><br>" +
-        "YOUR WORD TO GUESS: "  /*VARIABLE HERE!!!!!!!!*/ + 
+        "YOUR WORD TO GUESS: "  + undWord + 
         "<br><br>" + 
         "You've guessed these letters: " + guessed;
 
