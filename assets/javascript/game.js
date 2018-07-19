@@ -17,6 +17,7 @@ var wordBank = [
     "mushrooms",
     "bacon",
     "sardines"
+
 ];
 
 
@@ -43,6 +44,15 @@ randWord = function(arr) {
 splitWord = function(target) {
     var randoTwo = target.split("");
     return randoTwo;
+}
+
+resetGame = function() {
+    undArray = [];
+    pcChoiceInit = randWord(wordBank);
+    pcChoice = splitWord(pcChoiceInit);
+    undWord = wordWipe(pcChoice);
+    guessLeft = 12;
+    guessed = [];
 }
 
 // getting a starting word for the computer before key press 
@@ -74,7 +84,6 @@ document.onkeyup = function(event) {
 
 
     if (pcChoice.includes(userGuess)) {
-        guessLeft--;
         for(i = 0; i < pcChoice.length; i++) {
             var choiceIndex = pcChoice.indexOf(userGuess);
             if (choiceIndex > -1) {
@@ -93,28 +102,14 @@ document.onkeyup = function(event) {
     if (undWord.includes("_") == false) {
         wins++
         alert("You've won!!!! The word was " + undWord + " The game has been reset.");
+        resetGame();
     }
 
     if (guessLeft == 0) {
         losses++ 
         alert("You've lost!!! The game has been reset.");
+        resetGame();
     }
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     var gameBody = 
@@ -129,12 +124,6 @@ document.onkeyup = function(event) {
     
     
     document.querySelector("#startBody").innerHTML = gameBody;
-
-
-
-
-
-
 
 
 }
