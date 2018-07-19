@@ -6,6 +6,7 @@ var losses = 0;
 var undArray = [];
 var alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var guessed = [];
+var pcChoice;
 
 // creating wordBank object that has our words 
 
@@ -23,6 +24,8 @@ var wordBank = {
 // and to get random words
 
 var wordBankSize = Object.keys(wordBank).length;
+
+var wordBankArr = Object.keys(wordBank);
 
 console.log(wordBankSize);
 
@@ -47,8 +50,10 @@ document.onkeyup = function(event) {
     }
 
     chooseWord = function() {
-        
+        pcChoice = wordBank['wordBankArr[Math.floor(Math.random() * wordBankSize)]'];
     }
+
+    console.log("HOPEFULLY THE PC CHOSE " + pcChoice);
 
 
 }
