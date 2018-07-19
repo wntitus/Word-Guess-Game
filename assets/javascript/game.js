@@ -6,7 +6,6 @@ var losses = 0;
 var undArray = [];
 var alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var guessed = [];
-var pcChoice;
 
 // creating wordBank object that has our words 
 
@@ -20,16 +19,7 @@ var wordBank = {
 
 }
 
-// this will create an array of the wordBank items and gets the length so we can use it later for any loops 
-// and to get random words
 
-var wordBankSize = Object.keys(wordBank).length;
-
-var wordBankArr = Object.keys(wordBank);
-
-var wordBankArrRand;
-
-console.log(wordBankSize);
 
 // creating a function to create an underscore array with the correct amount of underscores for each word
 
@@ -40,9 +30,6 @@ wordWipe = function(wone) {
     return undArray;
 }
 
-arrRandFunc = function() {
-    wordBankArrRand = wordBankArr[Math.floor(Math.random() * wordBankSize)];
-}
 
 document.onkeyup = function(event) {
 
@@ -56,12 +43,9 @@ document.onkeyup = function(event) {
         guessed.push(event.key);
     }
 
-    chooseWord = function() {
-        var pcChoice = wordBank.wordBankArrRand;
-        return pcChoice;
-    }
 
-    console.log("HOPEFULLY THE PC CHOSE " + chooseWord());
+
+
 
 
 }
