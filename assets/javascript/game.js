@@ -17,8 +17,15 @@ var wordBank = [
     "olives",
     "mushrooms",
     "bacon",
-    "sardines"
-
+    "sardines",
+    "meatballs",
+    "salami",
+    "peppers", 
+    "onions",
+    "chicken",
+    "ham", 
+    "pineapple", 
+    "tomatoes"
 ];
 
 // creating a function to create an underscore array with the correct amount of underscores for each word
