@@ -86,9 +86,15 @@ document.onkeyup = function(event) {
 
     console.log("THE USER PRESSED " + event.key);
 
-    // checking to make sure the user pressed a letter
+    // if user already guessed a letter, an alert will show and no guesses will be removed
 
-    if (alpha.includes(event.key)) {
+    if (guessed.includes(event.key)) {
+        alert("You already guessed that!");
+    }
+
+    // checking to make sure user pressed a letter
+
+    if (alpha.includes(event.key) && guessed.includes(event.key) == false) {
         var input = event.key;
         var userGuess = input.toLowerCase();
         guessed.push(event.key);
@@ -119,12 +125,14 @@ document.onkeyup = function(event) {
         guessLeft--;
     }
 
+
     // if the displayed letters no longer have any underscores (meaning the user has found all the letters), the game ends
     // and the user gains a win, then the game resets
 
     if (undWord.includes("_") == false) {
         wins++
-        alert("You've won!!!! The word was " + undWord + " The game has been reset.");
+        var finalWord = undWord.join("");
+        alert("You've won!!!! The word was: " + finalWord + ". The game has been reset.");
         resetGame();
     }
 
