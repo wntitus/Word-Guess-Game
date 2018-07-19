@@ -9,7 +9,7 @@ var alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n
 var guessed = [];
 var guessLeft = 12;
 
-// creating wordBank object that has our words 
+// creating wordBank array that has our words 
 
 
 var wordBank = [
