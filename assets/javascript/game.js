@@ -30,15 +30,17 @@ wordWipe = function(wone) {
     return undArray;
 }
 
-randWord = function(object) {
-    var result ;
-    var counter = 0;
-    for(var property in object) {
-        if (Math.random() < 1/++count) {
-            result = property;
-        }
-        return result;
-    }
+// creating a function to choose a random word from the wordbank array
+
+randWord = function(arr) {
+    var rando = arr[Math.floor(Math.random() * arr.length)];
+    return rando;
+}
+
+// creating a function to take a string and split it into an array where each letter is an index
+
+splitWord = function(target) {
+    var randoTwo = target.split("");
 }
 
 
@@ -91,6 +93,3 @@ document.onkeyup = function(event) {
 
 }
 
-var underscores = wordWipe(wordBank.wordOne);
-
-console.log(underscores);
