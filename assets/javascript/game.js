@@ -12,11 +12,11 @@ var pcChoice;
 
 
 var wordBank = {
-    wordOne : ["p", "e", "p", "p", "e", "r", "o", "n", "i"],
-    wordTwo : ["s", "a", "r", "d", "i", "n", "e", "s"] ,
-    wordThree : ["b", "a", "c", "o", "n"] ,
-    wordFour : ["o", "l", "i", "v", "e", "s"] ,
-    wordFive : ["m", "u", "s", "h", "r", "o", "o", "m", "s"] 
+    wordOne : "pepperoni",
+    wordTwo : "sardines" ,
+    wordThree : "bacon" ,
+    wordFour : "olives" ,
+    wordFive : "mushrooms" 
 
 }
 
@@ -26,6 +26,8 @@ var wordBank = {
 var wordBankSize = Object.keys(wordBank).length;
 
 var wordBankArr = Object.keys(wordBank);
+
+var wordBankArrRand;
 
 console.log(wordBankSize);
 
@@ -38,7 +40,12 @@ wordWipe = function(wone) {
     return undArray;
 }
 
+arrRandFunc = function() {
+    wordBankArrRand = wordBankArr[Math.floor(Math.random() * wordBankSize)];
+}
+
 document.onkeyup = function(event) {
+
 
     console.log("THE USER PRESSED " + event.key);
 
@@ -50,10 +57,11 @@ document.onkeyup = function(event) {
     }
 
     chooseWord = function() {
-        pcChoice = wordBank['wordBankArr[Math.floor(Math.random() * wordBankSize)]'];
+        var pcChoice = wordBank.wordBankArrRand;
+        return pcChoice;
     }
 
-    console.log("HOPEFULLY THE PC CHOSE " + pcChoice);
+    console.log("HOPEFULLY THE PC CHOSE " + chooseWord());
 
 
 }
