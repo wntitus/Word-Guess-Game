@@ -151,13 +151,14 @@ document.onkeyup = function(event) {
     // setting our game contents to a variable
     
     var gameBody = 
-        "<p>You have: " + guessLeft + " guesses left.</p>" +
-        "<p>You've won: " + wins + " times.</p>" +
-        "<p>You've lost: " + losses + " times.</p>" +
+        "<p class = 'border-bottom border-dark pb-3'>You have: " + guessLeft + " guesses left.</p>" +
+        "<p class = 'border-bottom border-dark pb-3'>You've won: " + wins + " times.</p>" +
+        "<p class = 'border-bottom border-dark pb-3'>You've lost: " + losses + " times.</p>" +
+        "<h4 class = 'text-muted mt-5'>What do I want on my pizza....?</h4>" + 
         "<br><br><br>" +
-        "YOUR WORD TO GUESS: "  + displayJoined + 
+        "<h3 class = 'bg-primary p-4 border border-dark rounded'>YOUR WORD TO GUESS: "  + displayJoined + "</h3>" +
         "<br><br>" + 
-        "You've guessed these letters: " + guessed;
+        "<p class = 'bg-secondary p-3 border border-dark rounded'>You've guessed these letters: " + guessed + "</p>";
 
     
     // updates the HTML of our main body div with the correct stats and HTML
