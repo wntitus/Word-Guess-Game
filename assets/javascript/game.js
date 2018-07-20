@@ -7,7 +7,7 @@ var losses = 0;
 var undArray = [];
 var alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var guessed = [];
-var guessLeft = 12;
+var guessLeft = 10;
 
 // creating wordBank array that has our words 
 
@@ -58,7 +58,7 @@ resetGame = function() {
     pcChoiceInit = randWord(wordBank);
     pcChoice = splitWord(pcChoiceInit);
     undWord = wordWipe(pcChoice);
-    guessLeft = 12;
+    guessLeft = 10;
     guessed = [];
 }
 
@@ -144,6 +144,9 @@ document.onkeyup = function(event) {
         resetGame();
     }
 
+
+
+
     // making it so our displayed empty word doesn't have commas and looks nice
 
     var displayJoined = undWord.join("     ");
@@ -151,7 +154,7 @@ document.onkeyup = function(event) {
     // setting our game contents to a variable
     
     var gameBody = 
-        "<p class = 'border-bottom border-dark pb-3'>You have: " + guessLeft + " guesses left.</p>" +
+        "<p id = 'guessTag' class = 'border-bottom border-dark pb-3'>You have: " + guessLeft + " guesses left.</p>" +
         "<p class = 'border-bottom border-dark pb-3'>You've won: " + wins + " times.</p>" +
         "<p class = 'border-bottom border-dark pb-3'>You've lost: " + losses + " times.</p>" +
         "<h4 class = 'text-muted mt-5'>What do I want on my pizza....?</h4>" + 
@@ -164,6 +167,15 @@ document.onkeyup = function(event) {
     // updates the HTML of our main body div with the correct stats and HTML
 
     document.querySelector("#startBody").innerHTML = gameBody;
+
+    if (guessLeft <= 3) {
+        var warning =
+            "<p class = 'border border-dark p-3 bg-danger'>You have: " + guessLeft + " guesses left.</p>";
+        document.querySelector("#guessTag").innerHTML = warning;
+
+    }
+
+
 
 
 }
