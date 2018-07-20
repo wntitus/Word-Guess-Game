@@ -100,6 +100,8 @@ document.onkeyup = function(event) {
         guessed.push(event.key);
     }
 
+    // if the computer choice doesn't have the user guess in it, the user loses a guess
+
     if (pcChoice.includes(userGuess) == false) {
         guessLeft--;
     }
@@ -123,7 +125,6 @@ document.onkeyup = function(event) {
         }
     }
 
-    // if the computer choice doesnt have the user guess in it, the user loses a guess 
 
 
     // if the displayed letters no longer have any underscores (meaning the user has found all the letters), the game ends
