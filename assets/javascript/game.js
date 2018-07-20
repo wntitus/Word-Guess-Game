@@ -100,6 +100,10 @@ document.onkeyup = function(event) {
         guessed.push(event.key);
     }
 
+    if (pcChoice.includes(userGuess) == false) {
+        guessLeft--;
+    }
+
     // checking to see if the computer choice has a letter in it that the user picked, if so the pc choice is iterated over
     // and the index of the user's letter is stored so that the letter can be removed from the computer choice and added
     // to our displayed letters (in this case the array of underscores functions as our display)
@@ -120,10 +124,6 @@ document.onkeyup = function(event) {
     }
 
     // if the computer choice doesnt have the user guess in it, the user loses a guess 
-
-    if (pcChoice.includes(userGuess) == false) {
-        guessLeft--;
-    }
 
 
     // if the displayed letters no longer have any underscores (meaning the user has found all the letters), the game ends
@@ -167,6 +167,8 @@ document.onkeyup = function(event) {
     // updates the HTML of our main body div with the correct stats and HTML
 
     document.querySelector("#startBody").innerHTML = gameBody;
+
+    // this will add a danger styling to the guesses left when the user reaches 3 left
 
     if (guessLeft <= 3) {
         var warning =
