@@ -5,7 +5,7 @@
 var wins = 0;
 var losses = 0;
 var undArray = [];
-var alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+let alphaCheck = /[a-z]/
 var guessed = [];
 var guessLeft = 10;
 
@@ -94,7 +94,7 @@ document.onkeyup = function(event) {
 
     // checking to make sure user pressed a letter
 
-    if (alpha.includes(event.key) && guessed.includes(event.key) == false) {
+    if (alphaCheck.test(event.key) && guessed.includes(event.key) == false) {
         var input = event.key;
         var userGuess = input.toLowerCase();
         guessed.push(event.key);
