@@ -65,18 +65,17 @@ resetGame = function() {
 // getting a starting word for the computer before key press 
 
 var pcChoiceInit = randWord(wordBank);
-console.log("PC CHOSE " + pcChoiceInit);
+
 
 // splitting starting word into an array of individual letters to make it easier to push into the underscore array so that
 // the proper correct guesses are displayed
 
 var pcChoice = splitWord(pcChoiceInit);
-console.log("THIS SHOULD BE AN ARRAY OF THE LETTERS " + pcChoice);
+
 
 // creating underscores array before key press 
 
 var undWord = wordWipe(pcChoice);
-console.log("THIS SHOULD BE ALL UNDERSCORES " + undWord);
 
 
 // main game logic begins after user presses a key
@@ -84,7 +83,7 @@ console.log("THIS SHOULD BE ALL UNDERSCORES " + undWord);
 document.onkeyup = function(event) {
 
 
-    console.log("THE USER PRESSED " + event.key);
+
 
     // if user already guessed a letter, an alert will show and no guesses will be removed
 
@@ -119,8 +118,7 @@ document.onkeyup = function(event) {
             if (choiceIndex > -1) {
                 delete pcChoice[choiceIndex];
                 undWord.splice(choiceIndex, 1, userGuess);
-                console.log(undWord + " loop " + i);
-                console.log(pcChoice + " loop " + i);
+
             }           
         }
     }
